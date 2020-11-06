@@ -8,27 +8,25 @@ import java.util.Set;
 public class Code03LengthOfLongestSubstring{
 
     /**
-     * 给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度
+     * 给定一个字符串，请你找出其中不含有重复字符的最长子串的长度
+     * 请保证所有的字符均为普通ASCII字符
      * @param s
      * @return
      */
     public static int lengthOfLongestSubstring(String s) {
-        if (s == null || s.length() == 0) return 0;
+        if (s.length()<2) return s.length();
         char[] chs = s.toCharArray();
         int L = 0;
         int R = 0;
         int maxLen = 1;
-        Set<Character> characterSet = new HashSet<>();
+        boolean [] visited=new boolean[128];
         while (R < chs.length) {
-            //rightPoint move
-            while (R < chs.length && !characterSet.contains(chs[R])) {
-                characterSet.add(chs[R]);
+            while (R < chs.length && !visited[chs[R]]) {
+                visited[chs[R]]=true;
                 R++;
             }
             maxLen = Math.max(maxLen, R - L);
-            if (characterSet.contains(chs[L])) {
-                characterSet.remove(chs[L]);
-            }
+            visited[chs[L]]=false;
             L++;
 
         }
@@ -36,7 +34,7 @@ public class Code03LengthOfLongestSubstring{
     }
 
     public static void main(String[] args) {
-        String s="pwwkew";
+        String s="   ";
         System.out.println(lengthOfLongestSubstring(s));
 
     }

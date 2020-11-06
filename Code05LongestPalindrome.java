@@ -26,12 +26,12 @@ public class Code05LongestPalindrome {
     public static  String longestPalindrome(String s) {
         char[] chs = manacherString(s);
         int[] pArr = new int[chs.length];//回文半径数组
-        int max = 0;
+        int maxLen = 0;
         int R = -1;//最长回文右边界的
         int C = -1;//R对应的回文中心点
         int resC = -1;
         for (int i = 0; i < chs.length; i++) {
-            pArr[i] = R > i ? Math.min(pArr[2 * C - i], R - i) : 1;
+            pArr[i] = i>=R ?  1:Math.min(pArr[2 * C - i], R - i) ;
             while (i + pArr[i] < chs.length && i - pArr[i] > -1 && chs[i + pArr[i]] == chs[i - pArr[i]]) {
                 pArr[i]++;
             }
@@ -39,20 +39,12 @@ public class Code05LongestPalindrome {
                 R = pArr[i] + i;
                 C = i;
             }
-            if (pArr[i] > max) {
-                max = pArr[i];
+            if (pArr[i] > maxLen) {
+                maxLen = pArr[i];
                 resC = i;
             }
         }
-        StringBuffer sb = new StringBuffer();
-        for (int i = resC - max + 1; i < resC + max; i++) {
-            if (chs[i] == '#') {
-                continue;
-            } else {
-                sb.append(chs[i]);
-            }
-        }
-        return sb.toString();
+       return generatePalindromeString(chs,resC,maxLen);
 
     }
 
@@ -69,6 +61,17 @@ public class Code05LongestPalindrome {
             res[i] = (i & 1) == 0 ? '#' : chs[j++];
         }
         return res;
+    }
+
+
+    public  static String generatePalindromeString(char[] chs,int center,int maxLen){
+       StringBuffer sb=new StringBuffer();
+       for(int i=center-maxLen+1;i<center+maxLen;i++){
+           if(chs[i]!='#'){
+               sb.append(chs[i]);
+           }
+       }
+       return sb.toString();
     }
 
     public static void main(String[] args) {
