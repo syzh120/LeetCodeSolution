@@ -28,28 +28,21 @@ public class Code07Reverse {
      * @return
      */
     public static int reverse(int x) {
-        if (x == Integer.MIN_VALUE) return 0;
-        boolean flag = true;
-        if (x < 0) {
-            flag = false;
-            x = -x;
-        }
         int res = 0;
         while (x != 0) {
-            if (res > Integer.MAX_VALUE / 10) {
+            if (res > Integer.MAX_VALUE / 10||res<Integer.MIN_VALUE/10) {
                 res = 0;
                 break;
             }
             res = res * 10 + (x % 10);
             x = x / 10;
         }
-        return flag ? res : -res;
+        return res;
     }
 
     public static void main(String[] args) {
-        //int x=-2147483648;
-        System.out.println(-Integer.MIN_VALUE);
-        //System.out.println(reverse(x));
+        System.out.println(Integer.MAX_VALUE);
+        System.out.println(Integer.MIN_VALUE);
 
     }
 }
