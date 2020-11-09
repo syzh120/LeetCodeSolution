@@ -1,2 +1,4 @@
 # LeetCodeSolution
 LEETCODE SOLUTION
+20201109
+打卡前10题
