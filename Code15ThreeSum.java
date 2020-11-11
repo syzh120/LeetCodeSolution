@@ -41,6 +41,15 @@ public class Code15ThreeSum {
         return resList;
     }
 
+    /**
+     * brute force backtrace way:Time Limit Exceed
+     * @param nums
+     * @param startIndex
+     * @param path
+     * @param resList
+     * @param visited
+     * @param res
+     */
     public static void process(int[] nums, int startIndex, List<Integer> path, List<List<Integer>> resList, boolean[] visited, int res) {
         for (int i = startIndex; i < nums.length; i++) {
 
