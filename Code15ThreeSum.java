@@ -32,7 +32,7 @@ public class Code15ThreeSum {
      * @return
      */
 
-    public static List<List<Integer>> threeSum(int[] nums) {
+    public static List<List<Integer>> threeSum1(int[] nums) {
         Arrays.sort(nums);
         List<List<Integer>> resList = new ArrayList<>();
         List<Integer> path = new ArrayList<>();
@@ -65,16 +65,45 @@ public class Code15ThreeSum {
 
     }
 
-    public static void main(String[] args) {
-        int[] nums = {-4, -1, -1, 0, 1, 2};
-        List<List<Integer>> resList = threeSum(nums);
-        for (List<Integer> res : resList) {
-            for (Integer num : res) {
-                System.out.print(num);
-            }
-            System.out.println();
+
+    /**
+     * sort and two pointer a better way than the previous brute force backtrack solution
+     * @param nums
+     * @return
+     */
+    public static List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> resList = new ArrayList<>();
+        if (nums == null || nums.length < 3) {
+            return resList;
         }
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length; i++) {
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue;
+            }
+            int j = i + 1;
+            int k = nums.length - 1;
+            while (j < k) {
+                if (j > i + 1 && nums[j] == nums[j - 1]) {
+                    j++;
+                    continue;
+                }
+                int sum = nums[i] + nums[j] + nums[k];
+                if (sum == 0) {
+                    resList.add(Arrays.asList(new Integer[]{nums[i],nums[j],nums[k]}));
+                    j++;
+                    k--;
+                    } else if (sum > 0) {
+                        k--;
+                    } else {
+                        j++;
+                    }
+                }
+        }
+        return resList;
     }
+
+
 
 
 }
