@@ -32,12 +32,12 @@ public class Code15ThreeSum {
      * @return
      */
 
-    public static List<List<Integer>> threeSum1(int[] nums) {
+    public static List<List<Integer>> threeSum(int[] nums,int target) {
         Arrays.sort(nums);
         List<List<Integer>> resList = new ArrayList<>();
         List<Integer> path = new ArrayList<>();
         boolean[] visited = new boolean[nums.length];
-        process(nums, 0, path, resList, visited, 0);
+        process(nums, 0, path, resList, visited, 0,target);
         return resList;
     }
 
@@ -50,7 +50,11 @@ public class Code15ThreeSum {
      * @param visited
      * @param res
      */
-    public static void process(int[] nums, int startIndex, List<Integer> path, List<List<Integer>> resList, boolean[] visited, int res) {
+    public static void process(int[] nums, int startIndex, List<Integer> path, List<List<Integer>> resList, boolean[] visited, int res,int target) {
+        if (path.size() == 3 && res == target) {
+            resList.add(new ArrayList<>(path));// deep copy
+        }
+
         for (int i = startIndex; i < nums.length; i++) {
 
             if(visited[i]==true){
@@ -63,10 +67,7 @@ public class Code15ThreeSum {
             visited[i] = true;
             res += nums[i];
             path.add(nums[i]);
-            if (path.size() == 3 && res == 0) {
-                resList.add(new ArrayList<>(path));// deep copy
-            }
-            process(nums, i + 1, path, resList, visited, res);
+            process(nums, i + 1, path, resList, visited, res,target);
             res = res - nums[i];
             path.remove(path.size() - 1);
             visited[i] = false;
