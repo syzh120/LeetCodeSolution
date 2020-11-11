@@ -37,7 +37,6 @@ public class Code17LetterCombinations {
         char[] chs=digits.toCharArray();
         final String [] arr={"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
         StringBuffer path=new StringBuffer();
-        boolean [] visited=new boolean[26];
         process(chs,resList,arr,path,len);
         return resList;
 
