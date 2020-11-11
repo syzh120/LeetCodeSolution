@@ -42,7 +42,7 @@ public class Code17LetterCombinations {
 
     }
 
-    static void process(char[] digits, List<String> resList, String[] arr, StringBuffer path, int length) {
+     static void process(char[] digits, List<String> resList, String[] arr, StringBuffer path, int length) {
         if (path.length() >= length) {
             resList.add(path.toString());
             return;
@@ -54,7 +54,7 @@ public class Code17LetterCombinations {
         }
     }
 
-     static void main(String[] args) {
+     public static void main(String[] args) {
         String digits="22";
         System.out.println(letterCombinations(digits));
     }
