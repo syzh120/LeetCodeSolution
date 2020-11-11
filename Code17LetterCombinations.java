@@ -38,27 +38,24 @@ public class Code17LetterCombinations {
         final String [] arr={"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
         StringBuffer path=new StringBuffer();
         boolean [] visited=new boolean[26];
-        process(chs,resList,arr,path,len,visited);
+        process(chs,resList,arr,path,len);
         return resList;
 
     }
 
-    static void process(char[] digits, List<String> resList, String[] arr, StringBuffer path, int length, boolean[] visited) {
+    static void process(char[] digits, List<String> resList, String[] arr, StringBuffer path, int length) {
         if (path.length() >= length) {
             resList.add(path.toString());
             return;
         }
         for (int i = 0; i < arr[digits[path.length()]  - '0'].length(); i++) {
-            if (visited[arr[digits[path.length()]- '0'].charAt(i)  -'a']) {
-                continue;
-            }
             path.append(arr[digits[path.length()] - '0'].charAt(i));
-            process(digits, resList, arr, path  , length, visited);
+            process(digits, resList, arr, path  , length);
             path.deleteCharAt(path.length()-1);
         }
     }
 
-    public static void main(String[] args) {
+     static void main(String[] args) {
         String digits="22";
         System.out.println(letterCombinations(digits));
     }
