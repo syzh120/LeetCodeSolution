@@ -1,9 +1,11 @@
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
 /**
  * @Author: ybchen
  * @Date: 2020/11/12 14:47
  */
 public class Code23MergeKLists {
-
 
     public static class ListNode {
         int val;
@@ -50,7 +52,7 @@ public class Code23MergeKLists {
      * @return
      */
 
-
+     //版本1
     public ListNode mergeKListsVer1(ListNode[] lists) {
         ListNode head = null;
         for (int i = 0; i <lists.length; i++) {
@@ -60,17 +62,42 @@ public class Code23MergeKLists {
     }
 
 
-    /**
-     *
-     * @param lists
-     * @return
-     */
+    ////版本2
     public static ListNode mergeKListsVer2(ListNode[] lists) {
         if(lists==null||lists.length==0) return null;
         return merge(lists,0,lists.length-1);
     }
 
-    public static ListNode merge(ListNode[] lists, int start, int end) {
+
+
+
+    //版本3
+    public ListNode mergeKListsVer3(ListNode[] lists) {
+        if (lists == null || lists.length == 0) return null;
+        PriorityQueue<ComposeType> minPQ = new PriorityQueue<>(new ValueAscendingComparator());
+        for (ListNode node : lists) {
+            if (node == null) continue;
+            minPQ.add(new ComposeType(node.val, node));
+        }
+        ListNode dummy = new ListNode(-1);
+        ListNode cur = dummy;
+        while (!minPQ.isEmpty()) {
+            ComposeType ct = minPQ.poll();
+            ListNode node = ct.node;
+            cur.next = node;
+            cur = cur.next;
+            if (node.next != null) {
+                minPQ.add(new ComposeType(node.next.val, node.next));
+            }
+        }
+        return dummy.next;
+    }
+
+
+
+
+
+    private static ListNode merge(ListNode[] lists, int start, int end) {
 
         if (start <end) {
             int mid = start + (end - start) / 2;
@@ -91,7 +118,7 @@ public class Code23MergeKLists {
      * @return
      */
 
-    public static ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+    private static ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         ListNode dummy = new ListNode(-1);
         ListNode cur = dummy;
         while (l1 != null || l2 != null) {
@@ -114,6 +141,43 @@ public class Code23MergeKLists {
         }
         return dummy.next;
     }
+
+
+
+    public class ComposeType {
+        int val;
+        ListNode node;
+
+        public ComposeType(int val, ListNode node) {
+            this.val = val;
+            this.node = node;
+        }
+    }
+
+    public class ValueAscendingComparator implements Comparator<ComposeType> {
+
+        @Override
+        public int compare(ComposeType o1, ComposeType o2) {
+            return o1.val - o2.val;
+        }
+    }
+
+    public static void main(String[] args) {
+        ListNode[] listNodes ={};
+        Code23MergeKLists code=new Code23MergeKLists();
+        code.mergeKListsVer3(listNodes);
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
