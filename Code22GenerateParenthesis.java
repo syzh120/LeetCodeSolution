@@ -49,16 +49,15 @@ public class Code22GenerateParenthesis {
             return;
         }
 
-        if (rightUsed > leftUsed||rightUsed > n || leftUsed > n) {
+        if (rightUsed > leftUsed || rightUsed > n || leftUsed > n) {
             return;
         }
 
-        processVer1(resList, n, sb.append('('), leftUsed+1, rightUsed);
+        processVer1(resList, n, sb.append('('), leftUsed + 1, rightUsed);
         sb.deleteCharAt(sb.length() - 1);
         processVer1(resList, n, sb.append(')'), leftUsed, rightUsed + 1);
         sb.deleteCharAt(sb.length() - 1);
     }
-
 
 
     public static void processVer2(List<String> resList, int n, StringBuffer sb, int leftUsed, int rightUsed, char[] choices) {
@@ -67,7 +66,7 @@ public class Code22GenerateParenthesis {
             return;
         }
         for (int i = 0; i < choices.length; i++) {
-            if (rightUsed > leftUsed||rightUsed > n || leftUsed > n) {
+            if (rightUsed > leftUsed || rightUsed > n || leftUsed > n) {
                 continue;
             }
             sb.append(choices[i]);
@@ -83,8 +82,8 @@ public class Code22GenerateParenthesis {
     }
 
     public static void main(String[] args) {
-        int n=2;
-        List<String> res=generateParenthesis(n);
+        int n = 2;
+        List<String> res = generateParenthesis(n);
         System.out.println(res);
     }
 

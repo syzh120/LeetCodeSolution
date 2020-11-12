@@ -6,7 +6,7 @@ import java.util.Stack;
  */
 public class Code21MergeTwoLists {
 
-     public class ListNode {
+     public static class ListNode {
           int val;
           ListNode next;
           ListNode() {}
@@ -31,7 +31,7 @@ public class Code21MergeTwoLists {
      * @param l2
      * @return
      */
-    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+    public static ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         ListNode dummy = new ListNode(-1);
         ListNode cur = dummy;
         while (l1 != null || l2 != null) {
