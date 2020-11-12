@@ -57,43 +57,4 @@ public class Code21MergeTwoLists {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public static void main(String[] args) {
-        Stack<Integer> s1 = new Stack<Integer>();
-        Stack<Integer> s2 = new Stack<Integer>();
-        s1.push(2);
-        s2.push(2);
-        System.out.println(s1.peek() == s2.peek());
-
-    }
 }
