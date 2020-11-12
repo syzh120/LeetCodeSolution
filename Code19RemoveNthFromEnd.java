@@ -36,26 +36,24 @@ public class Code19RemoveNthFromEnd {
      */
     public static ListNode removeNthFromEnd(ListNode head, int n) {
         if (head == null || n <= 0) return head;
-        ListNode faster = head;
-        ListNode slower = head;
-        ListNode pre = null;
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
+        ListNode faster = dummy;
+        ListNode slower = dummy;
+        ListNode pre = dummy;
         while (n > 1) {
             faster = faster.next;
-            n--;
+            n = n - 1;
         }
+
         while (faster.next != null) {
             faster = faster.next;
             pre = slower;
             slower = slower.next;
         }
-        if (pre == null) {
-            ListNode newHead = head.next;
-            head.next = null;
-            return newHead;
-        }
         pre.next = slower.next;
         slower.next = null;
-        return head;
+        return dummy.next;
     }
 
 }
