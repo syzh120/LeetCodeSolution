@@ -41,15 +41,14 @@ public class Code19RemoveNthFromEnd {
         ListNode faster = dummy;
         ListNode slower = dummy;
         ListNode pre = dummy;
-        while (n > 1) {
+        while (n > 1 || faster.next != null) {
             faster = faster.next;
-            n = n - 1;
-        }
-
-        while (faster.next != null) {
-            faster = faster.next;
-            pre = slower;
-            slower = slower.next;
+            if (n <= 1) {
+                pre=slower;
+                slower = slower.next;
+            } else {
+                n = n - 1;
+            }
         }
         pre.next = slower.next;
         slower.next = null;
