@@ -49,10 +49,7 @@ public class Code22GenerateParenthesis {
             return;
         }
 
-        if (rightUsed > leftUsed) {
-            return;
-        }
-        if (rightUsed > n || leftUsed > n) {
+        if (rightUsed > leftUsed||rightUsed > n || leftUsed > n) {
             return;
         }
 
@@ -70,10 +67,7 @@ public class Code22GenerateParenthesis {
             return;
         }
         for (int i = 0; i < choices.length; i++) {
-            if (rightUsed > leftUsed) {
-                continue;
-            }
-            if (rightUsed > n || leftUsed > n) {
+            if (rightUsed > leftUsed||rightUsed > n || leftUsed > n) {
                 continue;
             }
             sb.append(choices[i]);
