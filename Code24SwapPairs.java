@@ -73,15 +73,15 @@ public class Code24SwapPairs {
         ListNode cur = head;
         ListNode second;
         ListNode third;
-        ListNode preNode = dummy;
+        ListNode connectNode = dummy;
         while (cur != null && cur.next != null) {
             second = cur.next;
             third = second.next;
             cur.next = third;
             second.next = cur;
             //this step is important which reconnect the two reversed LinkedList
-            preNode.next = second;
-            preNode = cur;
+            connectNode.next = second;
+            connectNode = cur;
             cur = third;
         }
         return dummy.next;
