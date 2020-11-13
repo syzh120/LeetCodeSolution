@@ -49,16 +49,16 @@ public class Code24SwapPairs {
      */
 
     public ListNode swapPairs(ListNode head) {
-        if(head==null||head.next==null){
+        if (head == null || head.next == null) {
             return head;
         }
-        ListNode cur=head;
-        ListNode next=head.next;
-        ListNode third=head.next.next;
-        cur.next=third;
-        next.next=cur;
-        ListNode node=swapPairs(third);
-        cur.next=node;
+        ListNode cur = head;
+        ListNode next = head.next;
+        ListNode third = head.next.next;
+        cur.next = third;
+        next.next = cur;
+        ListNode node = swapPairs(third);
+        cur.next = node;
         return next;
     }
 
@@ -68,10 +68,10 @@ public class Code24SwapPairs {
             return head;
         }
         //add a dummy node can avoid the corner case of preNode
-        ListNode dummy=new ListNode(-1);
-        dummy.next=head;
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
         ListNode cur = head;
-        ListNode second = null;
+        ListNode second;
         ListNode third;
         ListNode preNode = dummy;
         while (cur != null && cur.next != null) {
@@ -81,7 +81,7 @@ public class Code24SwapPairs {
             second.next = cur;
             //this step is important which reconnect the two reversed LinkedList
             preNode.next = second;
-            preNode=cur;
+            preNode = cur;
             cur = third;
         }
         return dummy.next;
