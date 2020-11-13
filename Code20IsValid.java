@@ -75,6 +75,49 @@ public class Code20IsValid {
 
     }
 
+    /**
+     *This approach can nearly pass all the test cases,but will cause failure in such ([)] item
+     * @param s
+     * @return
+     */
+
+    public boolean isValidVer2(String s){
+        if(s==null||s.length()==0){
+            return true;
+        }
+        char[] chs=s.toCharArray();
+        int count1=0,count2=0,count3=0;
+        for(char ch:chs){
+            switch (ch) {
+                case '(':
+                    count1 = count1 + 1;
+                    break;
+                case ')':
+                    count1 = count1 - 1;
+                    break;
+                case '{':
+                    count2 = count2 + 1;
+                    break;
+                case '}':
+                    count2 = count2 - 1;
+                    break;
+                case '[':
+                    count3 = count3 + 1;
+                    break;
+                case ']':
+                    count3 = count3 - 1;
+                    break;
+            }
+            if(count1<0||count2<0||count3<0){
+                return false;
+            }
+        }
+        return count1==0&&count2==0&&count3==0;
+    }
+
+
+
+
 
 
 
