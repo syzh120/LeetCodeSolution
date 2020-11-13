@@ -83,7 +83,7 @@ public class Code25ReverseKGroup {
         dummy.next=head;
         int K = k;
         ListNode end = head;
-        ListNode preNode = dummy;
+        ListNode connectNode = dummy;
         ListNode resNode = head;
         ListNode cur = head;
         while (end != null) {
@@ -110,8 +110,9 @@ public class Code25ReverseKGroup {
                 cur = next;
             }
             cur.next = pre;
-            preNode.next=end;
-            preNode = temp;
+            //this step is important which reconnect the two reversed LinkedList
+            connectNode.next=end;
+            connectNode = temp;
             cur = endNext;
             end=cur;
             temp.next = endNext;
