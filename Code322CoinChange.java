@@ -4,7 +4,7 @@ import java.util.Arrays;
  * @Author: ybchen
  * @Date: 2020/11/23 9:49
  */
-public class Code322_CoinChange {
+public class Code322CoinChange {
 
 
     /**
@@ -25,14 +25,13 @@ public class Code322_CoinChange {
     }
 
     /**
+     * approach1：记忆化搜索
      * coins[index...] 组成出amount这么多钱，最少的硬币数量返回
-     *
      * @param coins
      * @param amount
      * @param index
      * @return
      */
-
 
     public static int process(int[] coins, int amount, int index, int[][] dp) {
         if (amount < 0) {
@@ -67,6 +66,13 @@ public class Code322_CoinChange {
         return dp[amount][index];
     }
 
+    /**
+     * 动态规划
+     * @param coins
+     * @param amount
+     * @return
+     */
+
     public static int dpWays(int[] coins, int amount) {
         int[][] dp = new int[amount + 1][coins.length + 1];
         for (int col = 0; col < coins.length + 1; col++) {
@@ -88,7 +94,6 @@ public class Code322_CoinChange {
                 } else {
                     dp[row][col] = Math.min(choose + 1, notChoose);
                 }
-
             }
         }
 
