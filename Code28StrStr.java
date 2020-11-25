@@ -4,6 +4,8 @@
  */
 public class Code28StrStr {
 
+    //Implement of KMP algorithm
+
     /**
      * 实现 strStr() 函数。
      *
@@ -31,7 +33,51 @@ public class Code28StrStr {
      * @return
      */
 
-    public int strStr(String haystack, String needle) {
-        return 0;
+    public static int strStr(String haystack, String needle) {
+        if (needle == null || needle.length() == 0) {
+            return 0;
+        }
+        int[] next = getNextArr(needle);
+        int i = 0;
+        int j = 0;
+        while (i < haystack.length() && j < needle.length()) {
+            if (haystack.charAt(i) == needle.charAt(j)) {
+                i++;
+                j++;
+            } else if (j > 0) {
+                j = next[j];
+            } else {
+                i++;
+            }
+        }
+        return j == needle.length() ? i - j : -1;
+    }
+
+    public static int[] getNextArr(String needle) {
+        if (needle.length() <= 1) {
+            return new int[]{-1};
+        }
+        int[] next = new int[needle.length()];
+        next[0] = -1;
+        int cnt = 0;
+        int i = 2;
+        while (i < next.length) {
+            if (needle.charAt(i - 1) == needle.charAt(cnt)) {
+                next[i++] = ++cnt;
+            } else if (cnt > 0) {
+                cnt = next[cnt];
+            } else {
+                next[i++] = 0;
+            }
+        }
+
+        return next;
+    }
+
+
+    public static void main(String[] args) {
+        String s="aaaaa";
+        String p="bba";
+        System.out.println(strStr(s,p));
     }
 }
