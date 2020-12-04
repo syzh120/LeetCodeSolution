@@ -39,14 +39,15 @@ public class Code39CombinationSum {
             List<Integer> path,
             List<List<Integer>> result
     ) {
-        if (target < 0) {
-            return;
-        }
+
         if (target == 0) {
             result.add(new ArrayList<>(path));
             return;
         }
         for (int i = startIndex; i < candidates.length; i++) {
+            if (target < 0) {
+                return;
+            }
             path.add(candidates[i]);
             dfs(candidates, target - candidates[i], i, path, result);
             path.remove(path.size() - 1);
