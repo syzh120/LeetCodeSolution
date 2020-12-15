@@ -3,10 +3,18 @@
  * @Date: 2020/12/14 15:55
  */
 public class Code41FirstMissingPositive {
-
+    /**
+     * Given an unsorted integer array nums, find the smallest missing positive integer.
+     *
+     * <p>Follow up: Could you implement an algorithm that runs in O(n) time and uses constant extra
+     * space.?
+     *
+     * @param nums
+     * @return
+     */
     public static int firstMissingPositive(int[] nums) {
         for (int i = 0; i < nums.length; i++) {
-            while (nums[i] > 0 && nums[i] <= nums.length && nums[i] != i + 1 && nums[nums[i] - 1] != nums[i]) {
+            while (nums[i] > 0 && nums[i] < nums.length && nums[i] != i + 1 && nums[nums[i] - 1] != nums[i]) {
                 swap(nums, i, nums[i] - 1);
             }
         }
