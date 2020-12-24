@@ -18,35 +18,20 @@ public class Code45JumpGameII {
      * @return
      */
     public static int jump(int[] nums) {
-        if (nums.length <= 1) return 0;
-        int R = 0;
-        int result = 1;
+        int result = 0;
         int curFastest = 0;
-        int stepIndex = 0;
-        int curIndex = 0;
-        int step = 1;
-        while (curIndex < nums.length) {
-            while (step <= nums[curIndex]) {
-                if (step + R + nums[R + step] > curFastest) {
-                    stepIndex = R + step;
-                    curFastest = step + nums[R + step] + R;
-                }
-                if (curFastest >= nums.length - 1 && R == 0 && step == 1) {
-                    return result;
-                }
-                if (curFastest >= nums.length - 1) {
-                    return result + 1;
-                }
-                step++;
+        int nextFastest = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (curFastest < i) {
+                result++;
+                curFastest = nextFastest;
             }
-            result = result + 1;
-            curIndex = stepIndex;
-            curFastest = 0;
-            R = curIndex;
-            step = 1;
+            nextFastest = Math.max(nums[i] + i, nextFastest);
+
         }
         return result;
     }
+
 
     public static void main(String[] args) {
         int[] nums = {2, 3, 1, 1, 4};

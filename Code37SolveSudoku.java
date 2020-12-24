@@ -2,7 +2,7 @@
  * @Author: ybchen
  * @Date: 2020/12/14 10:30
  */
-public class Code39SolveSudoku {
+public class Code37SolveSudoku {
     /**
      * Write a program to solve a Sudoku puzzle by filling the empty cells.
      *
