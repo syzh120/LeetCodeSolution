@@ -20,7 +20,6 @@ public class Code96UniqueBinarySearchTrees {
                 dp[i] = dp[i] + dp[j] * dp[i - j - 1];
             }
         }
-
         return dp[n];
     }
 
