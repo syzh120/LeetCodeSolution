@@ -59,7 +59,7 @@ public class Code98ValidateBinarySearchTree {
         ReturnType rightInfo = process(root.right);
         long min = Math.min(Math.min(leftInfo.min, rightInfo.min), root.val);
         long max = Math.max(Math.max(leftInfo.max, rightInfo.max), root.val);
-        boolean isBst = leftInfo.isBst && rightInfo.isBst && leftInfo.max <= root.val && root.val <= rightInfo.min;
+        boolean isBst = leftInfo.isBst && rightInfo.isBst && leftInfo.max < root.val && root.val < rightInfo.min;
         return new ReturnType(max, min, isBst);
     }
 
