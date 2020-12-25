@@ -45,5 +45,10 @@ public class Code04FindMedianSortedArrays {
         }
     }
 
-
+    public static void main(String[] args) {
+        //
+        int[] nums1 = {2};
+        int[] nums2 = {};
+        findMedianSortedArrays(nums1, nums2);
+    }
 }
