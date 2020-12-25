@@ -12,12 +12,7 @@ public class Code67AddBinary {
      * @return
      */
     public static String addBinary(String a, String b) {
-        if (a == null || a.length() == 0) {
-            return b;
-        }
-        if (b == null || b.length() == 0) {
-            return a;
-        }
+
         StringBuilder sb = new StringBuilder();
         int i = a.length() - 1;
         int j = b.length() - 1;
