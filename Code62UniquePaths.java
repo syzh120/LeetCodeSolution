@@ -17,6 +17,7 @@ public class Code62UniquePaths {
      * @param n
      * @return
      */
+    //TODO 数学方法
     public int uniquePaths(int m, int n) {
         if (m == 0 || n == 0) {
             return 0;
@@ -32,5 +33,23 @@ public class Code62UniquePaths {
             }
         }
         return dp[m - 1][n - 1];
+    }
+
+    /**
+     * Math approach
+     */
+    public int uniquePathsVer2(int m, int n) {
+        if (m < n) {
+            return uniquePathsVer2(n, m);
+        }
+        long result = 1;
+        int j = 1;
+        m = m - 1;
+        n = n - 1;
+        for (int i = m + 1; i <= m + n; i++, j++) {
+            result = result * i;
+            result = result / j;
+        }
+        return (int) result;
     }
 }

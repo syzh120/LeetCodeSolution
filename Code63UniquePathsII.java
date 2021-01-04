@@ -3,6 +3,7 @@
  * @Date: 2020/12/29 18:28
  */
 public class Code63UniquePathsII {
+    private static final int UNREACHED = 1;
 
     /**
      * A robot is located at the top-left corner of a m x n grid (marked 'Start' in the diagram
@@ -24,7 +25,7 @@ public class Code63UniquePathsII {
         }
         int row = obstacleGrid.length;
         int column = obstacleGrid[0].length;
-        if (obstacleGrid[0][0] == 1 || obstacleGrid[row - 1][column - 1] == 1) {
+        if (obstacleGrid[0][0] == UNREACHED || obstacleGrid[row - 1][column - 1] == UNREACHED) {
             return 0;
         }
         int[][] dp = new int[row][column];
@@ -37,7 +38,7 @@ public class Code63UniquePathsII {
         }
         for (int i = 1; i < row; i++) {
             for (int j = 1; j < column; j++) {
-                if (obstacleGrid[i][j] != 1) {
+                if (obstacleGrid[i][j] != UNREACHED) {
                     dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
                 }
             }
