@@ -24,27 +24,26 @@ public class Code51SolveNQueens {
         int totalRow = n;
         int curRow = 0;
         List<Integer> queueList = new ArrayList<>();
-        List<List<Integer>> resList = new ArrayList<>();
-        List<List<String>> result = new ArrayList<>();
-        process(totalRow, curRow, queueList, resList);
-        for (List<Integer> list : resList) {
-            result.add(intList2StrList(list, n));
-        }
-        return result;
+        List<List<String>> resList = new ArrayList<>();
+        char[][] board = generateBoard(n);
+        process(totalRow, curRow, queueList, resList, board);
+        return resList;
     }
 
 
-    public static void process(int totalRow, int curRow, List<Integer> queueList, List<List<Integer>> resList) {
+    public static void process(int totalRow, int curRow, List<Integer> queueList, List<List<String>> resList, char[][] board) {
         if (curRow >= totalRow) {
-            resList.add(new ArrayList<>(queueList));
+            resList.add(intList2StrList(board));
         }
         for (int curColumn = 0; curColumn < totalRow; curColumn++) {
             if (!canPlaceQueue(queueList, curRow, curColumn)) {
                 continue;
             } else {
+                board[curRow][curColumn] = 'Q';
                 queueList.add(curColumn);
-                process(totalRow, curRow + 1, queueList, resList);
+                process(totalRow, curRow + 1, queueList, resList, board);
                 queueList.remove(queueList.size() - 1);
+                board[curRow][curColumn] = '.';
             }
 
         }
@@ -61,16 +60,15 @@ public class Code51SolveNQueens {
         return true;
     }
 
-    public List<String> intList2StrList(List<Integer> intList, int boardSize) {
+    public static List<String> intList2StrList(char[][] board) {
         List<String> stringList = new ArrayList<>();
-        char[][] board = generateBoard(boardSize);
+        int boardSize = board.length;
         for (int row = 0; row < boardSize; row++) {
-            int colPlace = intList.get(row);
-            board[row][colPlace] = 'Q';
             stringList.add(new String(board[row]));
         }
         return stringList;
     }
+
 
     public char[][] generateBoard(int boardSize) {
         char[][] board = new char[boardSize][boardSize];
