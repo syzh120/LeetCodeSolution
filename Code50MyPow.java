@@ -10,26 +10,24 @@ public class Code50MyPow {
      * @param n
      * @return
      */
-    public static double myPow(double x, int n) {
-        if (n < 0) {
-            n = Math.abs(n);
-            return 1.0 / process(x, n);
-        } else {
-            return process(x, -n);
-        }
-    }
-
     public static double process(double x, int n) {
         double result = 1.0;
         while (n != 0) {
-            if ((n & 1) != 0) {
+            if ((n & 1) == 1) {
                 result = result * x;
             }
-            n = n / 2;
             x = x * x;
+            n = n / 2;
         }
-
         return result;
+    }
+
+    public static double myPow(double x, int n) {
+        if (n < 0) {
+            return 1.0 / process(x, Math.abs(n));
+        } else {
+            return process(x, n);
+        }
     }
 
     public static void main(String[] args) {
