@@ -76,4 +76,10 @@ public class Code29Divide {
         return dividend > 0 && divisor > 0 || dividend < 0 && divisor < 0;
     }
 
+    public static void main(String[] args) {
+        int dividend = 10;
+        int divisor = 3;
+        divide(dividend, divisor);
+        //
+    }
 }
