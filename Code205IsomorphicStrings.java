@@ -7,6 +7,7 @@ import java.util.Map;
  */
 public class Code205IsomorphicStrings {
 
+    //TODO 尝试不用map解决此问题
     public boolean process(String s, String t) {
         char[] chs = s.toCharArray();
         char[] cht = t.toCharArray();
