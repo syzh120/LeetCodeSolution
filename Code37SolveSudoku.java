@@ -38,8 +38,8 @@ public class Code37SolveSudoku {
                     if (dfs(board, curRow, curCol + 1, totalRow, totalCol)) {
                         return true;
                     }
-                    board[curRow][curCol] = '.';
                 }
+                board[curRow][curCol] = '.';
             }
         } else {
             if (curCol >= board.length - 1) {
