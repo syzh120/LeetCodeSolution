@@ -1,10 +1,8 @@
 /**
  * @Author: ybchen
- * @Date: 2021/2/19 15:18
+ * @Date: 2021/3/11 18:15
  */
-public class Code100IsSameTree {
-
-
+public class Code101SymmetricTree {
     public class TreeNode {
         int val;
         TreeNode left;
@@ -24,12 +22,19 @@ public class Code100IsSameTree {
         }
     }
 
-    public boolean isSameTree(TreeNode p, TreeNode q) {
-        if (p == null && q == null) return true;
+    public boolean isSymmetric(TreeNode root) {
+        return isSymmetric(root.left, root.right);
+    }
+
+
+    public boolean isSymmetric(TreeNode p, TreeNode q) {
+        if (p == null && q == null) {
+            return true;
+        }
         if (p == null || q == null) {
             return false;
         }
-        return p.val == q.val && isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+        return isSymmetric(p.left, q.right) && isSymmetric(p.right, q.left) && q.val == p.val;
     }
 
 }
