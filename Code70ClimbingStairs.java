@@ -40,7 +40,7 @@ public class Code70ClimbingStairs {
     }
 
     /**
-     * 方阵的乘法
+     * 矩阵的乘法
      *
      * @param
      * @return

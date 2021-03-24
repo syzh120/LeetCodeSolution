@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 /**
  * @Author: ybchen
  * @Date: 2020/11/23 9:49
@@ -37,6 +35,7 @@ public class Code322CoinChange {
         if (amount < 0) {
             return -1;
         }
+        //-2 which the initial value means that  have not calculated yet
         if (dp[amount][index] != -2) {
             return dp[amount][index];
         }
