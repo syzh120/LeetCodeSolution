@@ -27,6 +27,9 @@ public class Code114Flatten {
 
 
     public static void flatten(TreeNode root) {
+        if (root == null) {
+            return;
+        }
         Stack<TreeNode> stack = new Stack<>();
         stack.add(root);
         TreeNode preNode = null;
@@ -40,6 +43,7 @@ public class Code114Flatten {
             }
             if (preNode != null) {
                 preNode.right = curNode;
+                preNode.left = null;
             }
             preNode = curNode;
 
