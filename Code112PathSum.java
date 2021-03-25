@@ -23,7 +23,7 @@ public class Code112PathSum {
     }
 
 
-    public boolean hasPathSum(TreeNode root, int targetSum) {
+    public static boolean hasPathSum(TreeNode root, int targetSum) {
        
         if (root == null) {
             return false;
