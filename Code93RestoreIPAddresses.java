@@ -18,7 +18,15 @@ public class Code93RestoreIPAddresses {
 
     }
 
-
+    /**
+     * this problem is similar with the subsets problem
+     * which can solved by subsets split
+     *
+     * @param s
+     * @param result
+     * @param path
+     * @param startIndex
+     */
     public static void process(String s, List<String> result, Deque<String> path, int startIndex) {
         if (startIndex >= s.length() && path.size() == 4) {
             result.add(String.join(".", path));
@@ -32,7 +40,7 @@ public class Code93RestoreIPAddresses {
                 continue;
             }
             int candidateIp = judgeIpSegment(s, startIndex, endIndex);
-            if (candidateIp < 0 || candidateIp > 255) {//which is not a valid ipAddress
+            if (candidateIp < 0 || candidateIp > 255) {//which is not a valid ip address
                 continue;
             } else {
                 path.add(String.valueOf(candidateIp));
