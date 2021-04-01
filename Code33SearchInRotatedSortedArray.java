@@ -9,21 +9,21 @@ public class Code33SearchInRotatedSortedArray {
         int start = 0;
         int end = nums.length - 1;
         while (start + 1 < end) {
-            int mid = start + (end - start) / 2;
-            if (nums[mid] == target) {
-                return mid;
+            int splitPoint = start + (end - start) / 2;
+            if (nums[splitPoint] == target) {
+                return splitPoint;
             }
-            if (nums[mid] > nums[0]) {
-                if (target >= nums[start] && target < nums[mid]) {
-                    end = mid;
+            if (isSplitInLeft(nums, splitPoint)) {
+                if (target >= nums[start] && target < nums[splitPoint]) {
+                    end = splitPoint;
                 } else {
-                    start = mid;
+                    start = splitPoint;
                 }
             } else {
-                if (target > nums[mid] && target <= nums[end]) {
-                    start = mid;
+                if (target > nums[splitPoint] && target <= nums[end]) {
+                    start = splitPoint;
                 } else {
-                    end = mid;
+                    end = splitPoint;
                 }
 
             }
@@ -35,7 +35,13 @@ public class Code33SearchInRotatedSortedArray {
 
     }
 
-    public static void main(String[] args) {
+
+    public static boolean isSplitInLeft(int[] arr, int splitPoint) {
+        return arr[splitPoint] > arr[0];
+    }
+
+
+    static void main(String[] args) {
 
         int [] arr={1,3,5};
         int target=1;
