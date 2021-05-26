@@ -33,7 +33,7 @@ public class Code26RemoveDuplicates {
 
             }
         }
-        return 1;
+        return L;
     }
     /**
      * 请保证 arr[i] arr[j]不指向同一内存区域

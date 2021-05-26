@@ -19,14 +19,14 @@ public class Code45JumpGameII {
      */
     public static int jump(int[] nums) {
         int result = 0;
-        int curFastest = 0;
-        int nextFastest = 0;
+        int cur = 0;
+        int next = 0;
         for (int i = 0; i < nums.length; i++) {
-            if (curFastest < i) {
+            if (cur < i) {
                 result++;
-                curFastest = nextFastest;
+                cur = next;
             }
-            nextFastest = Math.max(nums[i] + i, nextFastest);
+            next = Math.max(nums[i] + i, next);
 
         }
         return result;
