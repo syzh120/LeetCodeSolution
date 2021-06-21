@@ -31,13 +31,35 @@ public class Code86PartitionList {
         if (head == null || head.next == null) {
             return head;
         }
-
-
-        return head;
+        ListNode dummy1 = new ListNode(-1);
+        ListNode cur1 = dummy1;
+        ListNode dummy2 = new ListNode(-1);
+        ListNode cur2 = dummy2;
+        ListNode cur = head;
+        ListNode next = cur;
+        while (cur != null) {
+            if (cur.val <= x) {
+                cur1.next = cur;
+                next = cur.next;
+                cur.next = null;
+                cur = next;
+                cur1 = cur1.next;
+            } else {
+                cur2.next = cur;
+                next = cur.next;
+                cur.next = null;
+                cur = next;
+                cur2 = cur2.next;
+            }
+        }
+        cur1.next = dummy2.next;
+        return dummy1.next;
     }
 
 
     public static void main(String[] args) {
+
+
         //1,4,3,2,5,2
         ListNode head = new ListNode(1);
         ListNode node1 = new ListNode(4);
@@ -56,6 +78,7 @@ public class Code86PartitionList {
             System.out.println(curNode.val);
             curNode = curNode.next;
         }
+
 
     }
 }
