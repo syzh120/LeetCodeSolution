@@ -6,6 +6,7 @@ public class Code1154DayofYear {
     public final int[] daysOfMonth = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
     //date = "2019-02-10" 41
+
     public int dayOfYear(String date) {
         int year = Integer.valueOf(date.substring(0, 5));
         int month = Integer.valueOf(date.substring(5, 7));
