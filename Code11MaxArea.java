@@ -32,6 +32,7 @@ public class Code11MaxArea {
                 R--;
             }
         }
+
         return maxArea;
     }
 }
