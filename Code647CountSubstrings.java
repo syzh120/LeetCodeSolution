@@ -50,6 +50,7 @@ public class Code647CountSubstrings {
                     result++;
                 }
             }
+
         }
         return result;
     }
