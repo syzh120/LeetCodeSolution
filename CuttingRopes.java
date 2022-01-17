@@ -1,31 +1,31 @@
+import java.util.Arrays;
+
 /**
  * @Author: ybchen
  * @Date: 2021/8/11 9:11
  */
 public class CuttingRopes {
 
-    /**
-     * @param prices
-     * @param n
-     * @return
-     */
-    public static int cutting(int[] prices, int n) {
-        if (prices == null || prices.length == 0) {
-            return 0;
-        }
-        int[] dp = new int[n + 1];
-        dp[1] = prices[0];
-        for (int i = 2; i < n + 1; i++) {
-            dp[i] = prices[i - 1];
-            for (int k = 1; k <= i; k++) {
-                dp[i] = Math.max(dp[i], dp[i - k] + prices[k - 1]);
-            }
-        }
-        return dp[n];
+    public static int cuttingRope(int n) {
+        int[] cache = new int[n + 1];
+        Arrays.fill(cache, -1);
+        return process(n, cache);
+    }
 
+
+    public static int process(int leftLength, int[] cache) {
+        if (leftLength == 1) return 1;
+        if (cache[leftLength] != -1) return cache[leftLength];
+        int result = 0;
+        for (int i = 1; i < leftLength; i++) {
+            result = Math.max(result, i * process(leftLength - i, cache));
+        }
+        cache[leftLength] = result;
+        return result;
     }
 
     public static void main(String[] args) {
-
+        int n = 10;
+        System.out.print(cuttingRope(n));
     }
 }

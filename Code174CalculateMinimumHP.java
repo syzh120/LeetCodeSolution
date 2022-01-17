@@ -30,7 +30,7 @@ public class Code174CalculateMinimumHP {
         }
         if (curM == M - 1 && curN == N - 1) {
             dp[curM][curN] = arr[curM][curN] >= 0 ? 1 : 1 - arr[curM][curN];
-            return arr[curM][curN] >= 0 ? 1 : 1 - arr[curM][curN];
+            return dp[curM][curN];
         }
         int goDown = process(arr, curM + 1, curN, M, N, dp);
         int goRight = process(arr, curM, curN + 1, M, N, dp);
